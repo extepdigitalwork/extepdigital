@@ -1,0 +1,280 @@
+<!DOCTYPE html> 
+<html lang="pl" class="scroll-smooth"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>ExTep Digital | Strategia Transformacji Cyfrowej</title> 
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"> 
+    <style> 
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #020617; 
+            color: #f9fafb; 
+        } 
+        .accent-heading { 
+            font-family: 'Playfair Display', serif; 
+        } 
+        .gradient-text { 
+            background: linear-gradient(to right, #4ade80, #a3e635); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        } 
+        .glass-card { 
+            background: rgba(31, 41, 55, 0.4); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+        } 
+        .glass-card:hover { 
+            transform: translateY(-5px); 
+            border-color: #4ade80; 
+            box-shadow: 0 10px 30px -10px rgba(74, 222, 128, 0.3); 
+        } 
+        .step-number { 
+            font-size: 8rem; 
+            line-height: 0.8; 
+            font-weight: 800; 
+            color: rgba(255, 255, 255, 0.02); 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            z-index: 0; 
+            pointer-events: none; 
+        } 
+        .service-list-item { 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        } 
+        .service-list-item:last-child { 
+            border-bottom: none; 
+        } 
+    </style> 
+</head> 
+<body class="overflow-x-hidden"> 
+    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-gray-800"> 
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"> 
+            <div class="text-2xl font-extrabold tracking-tighter text-white"> 
+                ExTep <span class="text-green-400 font-normal italic">Digital</span> 
+            </div> 
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400"> 
+                <a href="#atuty" class="hover:text-green-400 transition">Dlaczego my?</a> 
+                <a href="#pakiety" class="hover:text-green-400 transition">Pakiety Startowe</a> 
+                <a href="#katalog" class="hover:text-green-400 transition">Katalog Usług</a> 
+            </div> 
+            <a href="#kontakt" class="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-[0_0_15px_rgba(34,197,94,0.4)] text-white"> 
+                Darmowa konsultacja 
+            </a> 
+        </div> 
+    </nav> 
+    
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 border-b border-gray-900 overflow-hidden"> 
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover -z-20 opacity-30">
+            <source src="https://www.dropbox.com/scl/fi/n9zgs6ba8854qnr6e6oqw/video_2026-05-10_17-55-49.mp4?rlkey=u2umh0hyaqqp3bmk6t2hf537r&raw=1" type="video/mp4">
+        </video>
+
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-20 pointer-events-none"> 
+            <div class="absolute top-10 left-1/4 w-[500px] h-[500px] bg-green-600 rounded-full blur-[150px]"></div> 
+            <div class="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-lime-600 rounded-full blur-[150px]"></div> 
+        </div> 
+        <div class="max-w-5xl mx-auto text-center"> 
+            <div class="inline-block px-4 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 text-xs font-bold uppercase tracking-widest mb-8"> 
+                Strategia Cyfrowa dla MŚP 
+            </div> 
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight"> 
+                Przestań przepalać budżet. <br> 
+                <span class="accent-heading gradient-text italic">Zautomatyzuj swój biznes.</span> 
+            </h1> 
+            <p class="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto"> 
+                Nie jesteśmy kolejną agencją, która uczy się na Twoich błędach. Tworzymy duet technologiczny. Budujemy nowoczesne strony i wdrażamy Agentów AI, którzy pracują za Ciebie 24/7. Bez korpo-bełkotu. 
+            </p> 
+            <div class="flex flex-col sm:flex-row justify-center gap-4"> 
+                <a href="#pakiety" class="bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg transition hover:bg-gray-200"> 
+                    Zobacz propozycję inwestycji 
+                </a> 
+                <a href="#kontakt" class="border border-gray-700 hover:border-green-400 text-gray-300 px-8 py-4 rounded-xl font-bold text-lg transition hover:text-white"> 
+                    Porozmawiajmy o konkretach 
+                </a> 
+            </div> 
+        </div> 
+    </section> 
+    
+    <section id="atuty" class="py-24 px-6 relative"> 
+        <div class="max-w-7xl mx-auto"> 
+            <div class="text-center mb-16"> 
+                <h2 class="text-3xl font-bold text-gray-200 mb-4 accent-heading italic">Twój największy atut? Brak pośredników.</h2> 
+                <p class="text-gray-500">MŚP nie ma czasu na biurokrację. Działamy w modelu Partner-Partner.</p> 
+            </div> 
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"> 
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden"> 
+                    <div class="step-number">01</div> 
+                    <div class="relative z-10"> 
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 text-green-400 text-xl"><span class="font-bold">✓</span></div> 
+                        <h3 class="text-xl font-bold mb-3 text-white">Rozmawiasz z twórcami</h3> 
+                        <p class="text-gray-400 text-sm leading-relaxed"> 
+                            Żadnych handlowców obiecujących gruszki na wierzbie. Żadnych głuchych telefonów do "kierowników projektu". Dzwonisz – odbiera człowiek, który pisze Twój kod i ustawia automatyzację. 
+                        </p> 
+                    </div> 
+                </div> 
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden"> 
+                    <div class="step-number">02</div> 
+                    <div class="relative z-10"> 
+                        <div class="w-12 h-12 bg-lime-500/20 rounded-xl flex items-center justify-center mb-6 text-lime-400 text-xl"><span class="font-bold">⚡</span></div> 
+                        <h3 class="text-xl font-bold mb-3 text-white">Prędkość wdrożenia</h3> 
+                        <p class="text-gray-400 text-sm leading-relaxed"> 
+                            Decyzje podejmujemy na jednym spotkaniu online. Projekt rusza tego samego dnia. Wdrażamy systemy w dni, nie w miesiące. 
+                        </p> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </section> 
+    
+    <section id="pakiety" class="py-24 px-6 relative bg-gray-900/30 border-y border-gray-800"> 
+        <div class="max-w-7xl mx-auto"> 
+            <div class="text-center mb-16"> 
+                <div class="text-green-400 font-bold tracking-widest text-sm uppercase mb-2">Gotowe Strategie</div> 
+                <h2 class="text-4xl font-extrabold text-white mb-4 accent-heading italic">Wybierz swój skok technologiczny</h2> 
+            </div> 
+            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto"> 
+                <div class="glass-card p-8 md:p-10 rounded-3xl relative flex flex-col"> 
+                    <div class="relative z-10 flex-grow"> 
+                        <div class="text-gray-400 uppercase tracking-widest text-xs mb-2">Pakiet Baza</div> 
+                        <h3 class="text-3xl font-bold mb-4 text-white">ExTep Web Start</h3> 
+                        <p class="text-gray-400 text-sm mb-8 leading-relaxed"> 
+                            Koniec wstydu przed klientami. Budujemy nowoczesną wizytówkę firmy, która budzi zaufanie i wygląda świetnie na każdym telefonie. 
+                        </p> 
+                        <ul class="space-y-4 text-sm text-gray-300 mb-10 font-medium"> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> Strona firmowa Premium</li> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> Projekt Logo i wizytówek</li> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> Podstawowa optymalizacja Google</li> 
+                        </ul> 
+                    </div> 
+                    <div class="relative z-10 pt-6 border-t border-gray-800 mt-auto flex items-end justify-between"> 
+                        <div> 
+                            <div class="text-xs text-gray-500 uppercase mb-1 line-through">Wartość: 8 500 PLN</div> 
+                            <div class="text-4xl font-black gradient-text">od 4 900 PLN</div> 
+                        </div> 
+                        <a href="#kontakt" class="bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-bold text-sm transition">Wybieram Start</a> 
+                    </div> 
+                </div> 
+                <div class="glass-card p-8 md:p-10 rounded-3xl relative flex flex-col border-green-500/40 shadow-[0_0_40px_rgba(74,222,128,0.15)]"> 
+                    <div class="absolute top-0 right-0 bg-green-500 text-black text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-widest z-20">Bestseller dla MŚP</div> 
+                    <div class="relative z-10 flex-grow"> 
+                        <div class="text-green-400 uppercase tracking-widest text-xs mb-2">Pełna Cyfryzacja</div> 
+                        <h3 class="text-3xl font-bold mb-4 text-white">AI Revolution</h3> 
+                        <p class="text-gray-400 text-sm mb-8 leading-relaxed"> 
+                            Zatrudnij cyfrowego pracownika, który nigdy nie idzie na L4. Wdrażamy stronę zintegrowaną z Agentem AI, który przejmie nudną komunikację. 
+                        </p> 
+                        <ul class="space-y-4 text-sm text-gray-300 mb-10 font-medium"> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> <strong class="text-white mr-1">Zaawansowany AI Agent</strong> (obsługa 24/7)</li> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> Pełna nowa strona WWW</li> 
+                            <li class="flex items-center"><span class="text-green-400 mr-3 text-lg">✦</span> Automatyzacja 1 kluczowego procesu</li> 
+                        </ul> 
+                    </div> 
+                    <div class="relative z-10 pt-6 border-t border-gray-800 mt-auto flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4"> 
+                        <div> 
+                            <div class="text-xs text-gray-500 uppercase mb-1 line-through">Wartość: 16 000 PLN</div> 
+                            <div class="text-4xl font-black text-green-400">od 8 500 PLN</div> 
+                        </div> 
+                        <a href="#kontakt" class="bg-green-500 hover:bg-green-400 text-black px-6 py-3 rounded-lg font-bold text-sm transition shadow-[0_0_15px_rgba(74,222,128,0.4)]">Rewolucjonizuję biznes</a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </section> 
+    
+    <section id="katalog" class="py-24 px-6 relative"> 
+        <div class="max-w-6xl mx-auto"> 
+            <div class="text-center mb-16"> 
+                <h2 class="text-3xl font-bold text-gray-200 mb-4 accent-heading italic">Szczegółowy Katalog Inwestycji</h2> 
+                <p class="text-gray-500">Pełna przejrzystość. Zero ukrytych kosztów. Wybierasz to, czego realnie potrzebujesz.</p> 
+            </div> 
+            <div class="grid md:grid-cols-2 gap-6"> 
+                <div class="glass-card p-6 rounded-2xl"> 
+                    <h3 class="text-green-400 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2"> 
+                        <span class="w-2 h-2 bg-green-400 rounded-full"></span> 1. Grafika & Brandbook 
+                    </h3> 
+                    <ul class="text-sm text-gray-300"> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Projekt mocnego logo</span> <span class="font-bold text-white">800 - 5 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span class="pr-4">Kompleksowy Brandbook <br><span class="text-xs text-gray-500 italic">(zależnie od objętości 20 vs 100 str.)</span></span> <span class="font-bold text-white text-right">3 000 - 20 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Materiały marketingowe (np. ulotka)</span> <span class="font-bold text-white">300 - 1 500 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Social Media (zestaw grafik/mc)</span> <span class="font-bold text-white">1 500 - 5 000 zł</span></li> 
+                    </ul> 
+                </div> 
+                <div class="glass-card p-6 rounded-2xl"> 
+                    <h3 class="text-green-300 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2"> 
+                        <span class="w-2 h-2 bg-green-300 rounded-full"></span> 2. Projektowanie WWW 
+                    </h3> 
+                    <ul class="text-sm text-gray-300"> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Wydajny Landing Page</span> <span class="font-bold text-white">1 500 - 6 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Strona korporacyjna (5-10 podstron)</span> <span class="font-bold text-white">4 000 - 15 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span class="pr-4">Sklep internetowy <br><span class="text-xs text-gray-500 italic">(+ koszty zaawansowanych integracji)</span></span> <span class="font-bold text-white text-right">od 5 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Projekt UI/UX (tylko design)</span> <span class="font-bold text-white">2 000 - 10 000 zł</span></li> 
+                    </ul> 
+                </div> 
+                <div class="glass-card p-6 rounded-2xl"> 
+                    <h3 class="text-lime-400 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2"> 
+                        <span class="w-2 h-2 bg-lime-400 rounded-full"></span> 3. AI Agenty & Automatyzacja 
+                    </h3> 
+                    <div class="text-xs text-gray-500 mb-3 italic">* Ceny zależą od złożoności logiki i integracji (CRM/ERP).</div> 
+                    <ul class="text-sm text-gray-300"> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Wdrożenie prostego chatbota</span> <span class="font-bold text-white">2 000 - 6 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Zaawansowany AI Agent (z pamięcią)</span> <span class="font-bold text-white">5 000 - 20 000 zł+</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Audyt i strategia automatyzacji</span> <span class="font-bold text-white">1 000 - 3 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Wdrożenie procesu (Make/Zapier)</span> <span class="font-bold text-white">1 500 - 8 000 zł</span></li> 
+                        <li class="flex justify-between py-3 service-list-item"><span>Miesięczny abonament (utrzymanie AI)</span> <span class="font-bold text-white">1 000 - 5 000 zł</span></li> 
+                    </ul> 
+                </div> 
+                <div class="flex flex-col gap-6"> 
+                    <div class="glass-card p-6 rounded-2xl flex-grow"> 
+                        <h3 class="text-green-400 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2"> 
+                            <span class="w-2 h-2 bg-green-400 rounded-full"></span> 4. Reklama & Poligrafia 
+                        </h3> 
+                        <ul class="text-sm text-gray-300"> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Projekt materiałów do druku</span> <span class="font-bold text-white">od 500 zł</span></li> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Przygotowanie do druku (DTP)</span> <span class="font-bold text-white">200 - 1 000 zł</span></li> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Produkcja (druk)</span> <span class="font-bold text-gray-500 italic">Wycena indywidualna</span></li> 
+                        </ul> 
+                    </div> 
+                    <div class="glass-card p-6 rounded-2xl flex-grow"> 
+                        <h3 class="text-lime-300 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2"> 
+                            <span class="w-2 h-2 bg-lime-300 rounded-full"></span> 5. Generowanie Leadów 
+                        </h3> 
+                        <ul class="text-sm text-gray-300"> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Kampanie Ads (obsługa)</span> <span class="font-bold text-white">3 000 - 7 000 zł/mc</span></li> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Lead Generation (B2B Outreach)</span> <span class="font-bold text-white">od 4 000 zł/mc</span></li> 
+                            <li class="flex justify-between py-3 service-list-item"><span>Marketingowe wsparcie (abonament)</span> <span class="font-bold text-white">od 2 500 zł/mc</span></li> 
+                        </ul> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </section> 
+    
+    <section id="kontakt" class="py-24 relative border-t border-gray-900"> 
+        <div class="max-w-3xl mx-auto px-6 text-center"> 
+            <div class="glass-card p-10 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden"> 
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-lime-400"></div> 
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-white accent-heading italic">Skończmy zgadywać. Policzmy to.</h2> 
+                <p class="text-gray-400 mb-10 leading-relaxed text-sm md:text-base"> 
+                    Oferujemy 15 minut darmowej, gęstej od wiedzy konsultacji. Powiesz nam o swoim biznesie, a my powiemy Ci szczerze, czy wdrożenie AI i nowej strony w ogóle Ci się opłaci. Zero sprzedażowego wciskania. 
+                </p> 
+                <form class="space-y-4 text-left"> 
+                    <div class="grid md:grid-cols-2 gap-4"> 
+                        <input type="text" placeholder="Twoje imię" class="w-full bg-black/50 border border-gray-700 rounded-xl px-5 py-4 focus:border-green-400 focus:outline-none text-white transition"> 
+                        <input type="email" placeholder="E-mail firmowy" class="w-full bg-black/50 border border-gray-700 rounded-xl px-5 py-4 focus:border-green-400 focus:outline-none text-white transition"> 
+                    </div> 
+                    <textarea class="w-full bg-black/50 border border-gray-700 rounded-xl px-5 py-4 focus:border-green-400 focus:outline-none text-white h-32 transition" placeholder="Napisz w 2 zdaniach, z czym masz największy problem..."></textarea> 
+                    <button type="button" class="w-full bg-green-600 hover:bg-green-500 text-white font-black py-4 rounded-xl text-lg transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] transform hover:-translate-y-1 mt-4"> 
+                        Rezerwuję 15 minut z założycielem 
+                    </button> 
+                </form> 
+            </div> 
+            <footer class="mt-16 text-gray-600 text-xs uppercase tracking-widest flex flex-col items-center gap-2"> 
+                <div>© 2024 ExTep Digital</div> 
+                <div>Technologia, która zarabia, a nie tylko wygląda.</div> 
+            </footer> 
+        </div> 
+    </section> 
+</body> 
+</html>
