@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExTep Digital | Стратегія Цифрової Трансформації</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #06050f;
+            --bg-card: rgba(18, 15, 40, 0.6);
+            --accent-violet: #7c3aed;
+            --accent-blue: #2563eb;
+            --accent-bright: #a78bfa;
+            --accent-glow: rgba(124, 58, 237, 0.4);
+            --text-primary: #f1f0ff;
+            --text-muted: #8b85a8;
+            --border-subtle: rgba(124, 58, 237, 0.15);
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        .display-font { font-family: 'Syne', sans-serif; }
+        nav {
+            background: rgba(6, 5, 15, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .nav-link { color: var(--text-muted); transition: color 0.2s; font-size: 0.875rem; font-weight: 500; }
+        .nav-link:hover { color: var(--accent-bright); }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue));
+            color: #fff; padding: 0.55rem 1.4rem; border-radius: 0.6rem;
+            font-weight: 700; font-size: 0.85rem;
+            transition: opacity 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+        .btn-primary:hover { opacity: 0.88; box-shadow: 0 0 28px var(--accent-glow); }
+        .lang-switcher {
+            display: flex; gap: 0.25rem;
+            background: rgba(124,58,237,0.1);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.5rem; padding: 0.2rem;
+        }
+        .lang-btn {
+            padding: 0.25rem 0.6rem; border-radius: 0.35rem;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+            color: var(--text-muted); transition: all 0.2s; text-decoration: none;
+        }
+        .lang-btn:hover { color: var(--accent-bright); background: rgba(124,58,237,0.15); }
+        .lang-btn.active { background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color: #fff; }
+        .hero-section {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center;
+            border-bottom: 1px solid var(--border-subtle); overflow: hidden;
+        }
+        .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.18; }
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(124,58,237,0.18) 0%, transparent 70%),
+                        radial-gradient(ellipse 50% 50% at 80% 70%, rgba(37,99,235,0.12) 0%, transparent 60%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0; z-index: -1;
+            background-image: linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.3rem 1rem; border-radius: 99px;
+            border: 1px solid rgba(124,58,237,0.35); background: rgba(124,58,237,0.1);
+            color: var(--accent-bright); font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent-bright); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .glass-card {
+            background: var(--bg-card); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.45); box-shadow: 0 12px 40px -10px rgba(124,58,237,0.25); }
+        .step-number {
+            font-size: 7rem; line-height: 0.8; font-weight: 800;
+            color: rgba(255,255,255,0.025); position: absolute; top: 10px; right: 10px;
+            z-index: 0; pointer-events: none; font-family: 'Syne', sans-serif;
+        }
+        .icon-badge { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:1.5rem; }
+        .icon-violet { background: rgba(124,58,237,0.15); color: var(--accent-bright); }
+        .icon-blue   { background: rgba(37,99,235,0.15);  color: #93c5fd; }
+        .service-list-item { border-bottom: 1px solid rgba(255,255,255,0.04); padding: 0.75rem 0; }
+        .service-list-item:last-child { border-bottom: none; }
+        .section-label { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-bright); margin-bottom:0.5rem; }
+        .pkg-featured { border-color: rgba(124,58,237,0.5); box-shadow: 0 0 50px rgba(124,58,237,0.12); }
+        .pkg-tag { background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color:#fff; font-size:0.65rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:0 0 0 0.75rem; }
+        .checkmark { color: var(--accent-bright); margin-right: 0.75rem; font-size: 1.1rem; }
+        .form-input { width:100%; background:rgba(0,0,0,0.4); border:1px solid rgba(124,58,237,0.2); border-radius:0.75rem; padding:1rem 1.25rem; color:var(--text-primary); transition:border-color 0.2s; outline:none; font-family:inherit; font-size:0.9rem; }
+        .form-input::placeholder { color: var(--text-muted); }
+        .form-input:focus { border-color: var(--accent-violet); }
+        .btn-submit { width:100%; background:linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color:#fff; font-weight:800; font-size:1rem; padding:1rem; border-radius:0.75rem; border:none; cursor:pointer; transition:opacity 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow:0 0 24px rgba(124,58,237,0.35); margin-top:0.5rem; font-family:inherit; }
+        .btn-submit:hover { opacity:0.9; transform:translateY(-2px); box-shadow:0 0 36px rgba(124,58,237,0.45); }
+        .cat-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { animation: fadeUp 0.7s ease both; }
+        .fade-up-1{animation-delay:0.1s} .fade-up-2{animation-delay:0.25s} .fade-up-3{animation-delay:0.4s} .fade-up-4{animation-delay:0.55s}
+        @media(max-width:768px){ .hero-section{min-height:auto;padding-top:7rem;padding-bottom:4rem} }
+        footer { border-top: 1px solid var(--border-subtle); }
+    </style>
+</head>
+<body>
+
+<nav class="fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-extrabold tracking-tight text-white display-font">
+            ExTep <span class="gradient-text">Digital</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#atuty" class="nav-link">Чому ми?</a>
+            <a href="#pakiety" class="nav-link">Пакети</a>
+            <a href="#katalog" class="nav-link">Послуги</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="lang-switcher">
+                <a href="index.html" class="lang-btn">PL</a>
+                <a href="index-ua.html" class="lang-btn active">UA</a>
+                <a href="index-en.html" class="lang-btn">EN</a>
+            </div>
+            <a href="#kontakt" class="btn-primary hidden sm:inline-block">Безкоштовна консультація</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section px-6">
+    <video autoplay loop muted playsinline class="hero-video">
+        <source src="https://www.dropbox.com/scl/fi/2934weo8e454r0wa7j7an/video_2026-05-12_21-53-41.mp4?rlkey=g7ppu2ca78cgkpp9f8bodedor&st=jiupk96l&raw=1" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="max-w-5xl mx-auto text-center w-full">
+        <div class="fade-up fade-up-1 mb-8"><span class="badge">Цифрова стратегія для МСБ</span></div>
+        <h1 class="display-font text-5xl md:text-7xl font-extrabold mb-6 leading-tight fade-up fade-up-2">
+            Перестань спалювати бюджет.<br>
+            <span class="gradient-text">Автоматизуй свій бізнес.</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto fade-up fade-up-3" style="color:var(--text-muted)">
+            Ми не чергове агентство, що вчиться на твоїх помилках. Ми — технологічний дует. Будуємо сучасні сайти та впроваджуємо AI-агентів, які працюють за тебе 24/7. Без корпоративного жаргону.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-up fade-up-4">
+            <a href="#pakiety" class="btn-primary" style="padding:1rem 2rem;font-size:1rem;border-radius:0.75rem;">Переглянути пропозицію</a>
+            <a href="#kontakt" style="border:1px solid rgba(124,58,237,0.3);color:var(--text-muted);padding:1rem 2rem;border-radius:0.75rem;font-weight:700;font-size:1rem;transition:all 0.2s;" onmouseover="this.style.borderColor='#a78bfa';this.style.color='#a78bfa'" onmouseout="this.style.borderColor='rgba(124,58,237,0.3)';this.style.color='var(--text-muted)'">
+                Поговоримо конкретно
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="atuty" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Модель співпраці</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-4" style="color:var(--text-primary)">
+                Твоя головна перевага?<br>Жодних посередників.
+            </h2>
+            <p style="color:var(--text-muted)">МСБ не має часу на бюрократію. Ми працюємо в моделі Партнер-Партнер.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="step-number">01</div>
+                <div class="relative z-10">
+                    <div class="icon-badge icon-violet">✓</div>
+                    <h3 class="text-xl font-bold mb-3" style="color:var(--text-primary)">Говориш із творцями</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+                        Жодних менеджерів, що обіцяють зірки з неба. Ніяких мовчазних дзвінків до «керівників проєкту». Телефонуєш — відповідає людина, яка пише твій код і налаштовує автоматизацію.
+                    </p>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="step-number">02</div>
+                <div class="relative z-10">
+                    <div class="icon-badge icon-blue">⚡</div>
+                    <h3 class="text-xl font-bold mb-3" style="color:var(--text-primary)">Швидкість впровадження</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+                        Рішення приймаємо на одній онлайн-зустрічі. Проєкт стартує того ж дня. Впроваджуємо системи за дні, а не місяці.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pakiety" class="py-24 px-6" style="background:rgba(18,15,40,0.3);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Готові стратегії</span>
+            <h2 class="display-font text-4xl font-extrabold mb-4" style="color:var(--text-primary)">Обери свій технологічний стрибок</h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="glass-card p-8 md:p-10 rounded-3xl flex flex-col">
+                <div>
+                    <div class="section-label mb-2">Базовий пакет</div>
+                    <h3 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">ExTep Web Start</h3>
+                    <p class="text-sm mb-8 leading-relaxed" style="color:var(--text-muted)">
+                        Кінець сорому перед клієнтами. Будуємо сучасну візитку компанії, яка викликає довіру та чудово виглядає на кожному телефоні.
+                    </p>
+                    <ul class="space-y-4 text-sm mb-10 font-medium" style="color:#c4bfdf">
+                        <li class="flex items-center"><span class="checkmark">✦</span> Преміум сайт компанії</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Розробка логотипу та візиток</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Базова оптимізація Google</li>
+                    </ul>
+                </div>
+                <div class="pt-6 mt-auto" style="border-top:1px solid rgba(124,58,237,0.15)">
+                    <a href="#kontakt" class="btn-primary" style="display:inline-block;padding:0.75rem 1.5rem;border-radius:0.65rem;font-size:0.9rem;">Обираю Start</a>
+                </div>
+            </div>
+            <div class="glass-card p-8 md:p-10 rounded-3xl flex flex-col pkg-featured relative">
+                <div class="absolute top-0 right-0 pkg-tag">Хіт для МСБ</div>
+                <div>
+                    <div class="section-label mb-2">Повна цифровізація</div>
+                    <h3 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">AI Revolution</h3>
+                    <p class="text-sm mb-8 leading-relaxed" style="color:var(--text-muted)">
+                        Найми цифрового працівника, який ніколи не йде на лікарняний. Впроваджуємо сайт, інтегрований з AI-агентом, що перебирає на себе рутинну комунікацію.
+                    </p>
+                    <ul class="space-y-4 text-sm mb-10 font-medium" style="color:#c4bfdf">
+                        <li class="flex items-center"><span class="checkmark">✦</span> <strong style="color:var(--text-primary);margin-right:4px;">Розширений AI-агент</strong> (підтримка 24/7)</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Повний новий вебсайт</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Автоматизація 1 ключового процесу</li>
+                    </ul>
+                </div>
+                <div class="pt-6 mt-auto" style="border-top:1px solid rgba(124,58,237,0.15)">
+                    <a href="#kontakt" class="btn-primary" style="display:inline-block;padding:0.75rem 1.5rem;border-radius:0.65rem;font-size:0.9rem;">Революціонізую бізнес</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="katalog" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Повна пропозиція</span>
+            <h2 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">Детальний каталог послуг</h2>
+            <p style="color:var(--text-muted)">Повна прозорість. Нуль прихованих витрат. Обираєш те, що реально потрібно.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:var(--accent-bright)">
+                    <span class="cat-dot" style="background:var(--accent-bright)"></span> 1. Графіка &amp; Брендбук
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">Розробка потужного логотипу</li>
+                    <li class="service-list-item">Комплексний брендбук</li>
+                    <li class="service-list-item">Маркетингові матеріали (напр. листівка)</li>
+                    <li class="service-list-item">Соціальні мережі (набір графіки / міс.)</li>
+                </ul>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#93c5fd">
+                    <span class="cat-dot" style="background:#93c5fd"></span> 2. Веброзробка
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">Ефективний Landing Page</li>
+                    <li class="service-list-item">Корпоративний сайт (5–10 сторінок)</li>
+                    <li class="service-list-item">Інтернет-магазин</li>
+                    <li class="service-list-item">Проєкт UI/UX (тільки дизайн)</li>
+                </ul>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#c4b5fd">
+                    <span class="cat-dot" style="background:#c4b5fd"></span> 3. AI-агенти &amp; Автоматизація
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">Впровадження простого чат-бота</li>
+                    <li class="service-list-item">Розширений AI-агент (з пам'яттю)</li>
+                    <li class="service-list-item">Аудит і стратегія автоматизації</li>
+                    <li class="service-list-item">Впровадження процесу (Make / Zapier)</li>
+                    <li class="service-list-item">Щомісячна підписка (підтримка AI)</li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="glass-card p-6 rounded-2xl flex-1">
+                    <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:var(--accent-bright)">
+                        <span class="cat-dot" style="background:var(--accent-bright)"></span> 4. Реклама &amp; Поліграфія
+                    </h3>
+                    <ul style="font-size:0.875rem;color:#c4bfdf">
+                        <li class="service-list-item">Дизайн матеріалів для друку</li>
+                        <li class="service-list-item">Підготовка до друку (DTP)</li>
+                        <li class="service-list-item">Виробництво (друк) — індивідуальна ціна</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex-1">
+                    <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#93c5fd">
+                        <span class="cat-dot" style="background:#93c5fd"></span> 5. Генерація лідів
+                    </h3>
+                    <ul style="font-size:0.875rem;color:#c4bfdf">
+                        <li class="service-list-item">Кампанії Ads (управління)</li>
+                        <li class="service-list-item">Lead Generation (B2B Outreach)</li>
+                        <li class="service-list-item">Маркетингова підтримка (підписка)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="kontakt" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+        <div class="glass-card p-10 md:p-14 rounded-3xl relative overflow-hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-violet),var(--accent-blue))"></div>
+            <span class="section-label">Безкоштовна консультація</span>
+            <h2 class="display-font text-3xl md:text-4xl font-extrabold mb-4" style="color:var(--text-primary)">
+                Перестанемо гадати.<br>Порахуємо разом.
+            </h2>
+            <p class="mb-10 leading-relaxed text-sm md:text-base" style="color:var(--text-muted)">
+                Пропонуємо 15 хвилин безкоштовної, насиченої знаннями консультації. Ти розкажеш про свій бізнес, а ми чесно скажемо, чи варто впроваджувати AI та новий сайт. Жодного нав'язливого продажу.
+            </p>
+            <form action="https://formspree.io/f/mojrybld" method="POST" class="space-y-4 text-left">
+                <input type="hidden" name="_next" value="https://twojadomena.pl/dziekuje.html">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" name="imie" placeholder="Твоє ім'я" required class="form-input">
+                    <input type="email" name="email" placeholder="Корпоративний e-mail" required class="form-input">
+                </div>
+                <textarea name="wiadomosc" required class="form-input" style="height:8rem;resize:vertical;" placeholder="Напиши у 2 реченнях, яка у тебе найбільша проблема..."></textarea>
+                <button type="submit" class="btn-submit">Резервую 15 хвилин із засновником →</button>
+            </form>
+        </div>
+        <footer class="mt-16 text-center" style="color:var(--text-muted);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase">
+            <div>© 2024 ExTep Digital</div>
+            <div class="mt-1" style="opacity:0.6">Технологія, яка заробляє, а не просто виглядає.</div>
+        </footer>
+    </div>
+</section>
+
+</body>
+</html>

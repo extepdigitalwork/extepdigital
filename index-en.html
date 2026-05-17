@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExTep Digital | Digital Transformation Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #06050f;
+            --bg-card: rgba(18, 15, 40, 0.6);
+            --accent-violet: #7c3aed;
+            --accent-blue: #2563eb;
+            --accent-bright: #a78bfa;
+            --accent-glow: rgba(124, 58, 237, 0.4);
+            --text-primary: #f1f0ff;
+            --text-muted: #8b85a8;
+            --border-subtle: rgba(124, 58, 237, 0.15);
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        .display-font { font-family: 'Syne', sans-serif; }
+        nav { background: rgba(6, 5, 15, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+        .nav-link { color: var(--text-muted); transition: color 0.2s; font-size: 0.875rem; font-weight: 500; }
+        .nav-link:hover { color: var(--accent-bright); }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color: #fff; padding: 0.55rem 1.4rem; border-radius: 0.6rem; font-weight: 700; font-size: 0.85rem; transition: opacity 0.2s, box-shadow 0.2s; box-shadow: 0 0 18px var(--accent-glow); }
+        .btn-primary:hover { opacity: 0.88; box-shadow: 0 0 28px var(--accent-glow); }
+        .lang-switcher { display:flex; gap:0.25rem; background:rgba(124,58,237,0.1); border:1px solid var(--border-subtle); border-radius:0.5rem; padding:0.2rem; }
+        .lang-btn { padding:0.25rem 0.6rem; border-radius:0.35rem; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; color:var(--text-muted); transition:all 0.2s; text-decoration:none; }
+        .lang-btn:hover { color:var(--accent-bright); background:rgba(124,58,237,0.15); }
+        .lang-btn.active { background:linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color:#fff; }
+        .hero-section { position:relative; min-height:100vh; display:flex; align-items:center; border-bottom:1px solid var(--border-subtle); overflow:hidden; }
+        .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; opacity:0.18; }
+        .hero-overlay { position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(124,58,237,0.18) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 80% 70%, rgba(37,99,235,0.12) 0%, transparent 60%); }
+        .hero-grid { position:absolute; inset:0; z-index:-1; background-image:linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px); background-size:60px 60px; }
+        .gradient-text { background:linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .badge { display:inline-flex; align-items:center; gap:0.4rem; padding:0.3rem 1rem; border-radius:99px; border:1px solid rgba(124,58,237,0.35); background:rgba(124,58,237,0.1); color:var(--accent-bright); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
+        .badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent-bright); animation:pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .glass-card { background:var(--bg-card); backdrop-filter:blur(12px); border:1px solid var(--border-subtle); transition:transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .glass-card:hover { transform:translateY(-4px); border-color:rgba(124,58,237,0.45); box-shadow:0 12px 40px -10px rgba(124,58,237,0.25); }
+        .step-number { font-size:7rem; line-height:0.8; font-weight:800; color:rgba(255,255,255,0.025); position:absolute; top:10px; right:10px; z-index:0; pointer-events:none; font-family:'Syne', sans-serif; }
+        .icon-badge { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:1.5rem; }
+        .icon-violet { background:rgba(124,58,237,0.15); color:var(--accent-bright); }
+        .icon-blue   { background:rgba(37,99,235,0.15); color:#93c5fd; }
+        .service-list-item { border-bottom:1px solid rgba(255,255,255,0.04); padding:0.75rem 0; }
+        .service-list-item:last-child { border-bottom:none; }
+        .section-label { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-bright); margin-bottom:0.5rem; }
+        .pkg-featured { border-color:rgba(124,58,237,0.5); box-shadow:0 0 50px rgba(124,58,237,0.12); }
+        .pkg-tag { background:linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color:#fff; font-size:0.65rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:0 0 0 0.75rem; }
+        .checkmark { color:var(--accent-bright); margin-right:0.75rem; font-size:1.1rem; }
+        .form-input { width:100%; background:rgba(0,0,0,0.4); border:1px solid rgba(124,58,237,0.2); border-radius:0.75rem; padding:1rem 1.25rem; color:var(--text-primary); transition:border-color 0.2s; outline:none; font-family:inherit; font-size:0.9rem; }
+        .form-input::placeholder { color:var(--text-muted); }
+        .form-input:focus { border-color:var(--accent-violet); }
+        .btn-submit { width:100%; background:linear-gradient(135deg, var(--accent-violet), var(--accent-blue)); color:#fff; font-weight:800; font-size:1rem; padding:1rem; border-radius:0.75rem; border:none; cursor:pointer; transition:opacity 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow:0 0 24px rgba(124,58,237,0.35); margin-top:0.5rem; font-family:inherit; }
+        .btn-submit:hover { opacity:0.9; transform:translateY(-2px); box-shadow:0 0 36px rgba(124,58,237,0.45); }
+        .cat-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { animation:fadeUp 0.7s ease both; }
+        .fade-up-1{animation-delay:0.1s} .fade-up-2{animation-delay:0.25s} .fade-up-3{animation-delay:0.4s} .fade-up-4{animation-delay:0.55s}
+        @media(max-width:768px){ .hero-section{min-height:auto;padding-top:7rem;padding-bottom:4rem} }
+        footer { border-top: 1px solid var(--border-subtle); }
+    </style>
+</head>
+<body>
+
+<nav class="fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-extrabold tracking-tight text-white display-font">
+            ExTep <span class="gradient-text">Digital</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#atuty" class="nav-link">Why us?</a>
+            <a href="#pakiety" class="nav-link">Packages</a>
+            <a href="#katalog" class="nav-link">Services</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="lang-switcher">
+                <a href="index.html" class="lang-btn">PL</a>
+                <a href="index-ua.html" class="lang-btn">UA</a>
+                <a href="index-en.html" class="lang-btn active">EN</a>
+            </div>
+            <a href="#kontakt" class="btn-primary hidden sm:inline-block">Free consultation</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section px-6">
+    <video autoplay loop muted playsinline class="hero-video">
+        <source src="https://www.dropbox.com/scl/fi/2934weo8e454r0wa7j7an/video_2026-05-12_21-53-41.mp4?rlkey=g7ppu2ca78cgkpp9f8bodedor&st=jiupk96l&raw=1" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="max-w-5xl mx-auto text-center w-full">
+        <div class="fade-up fade-up-1 mb-8"><span class="badge">Digital Strategy for SMEs</span></div>
+        <h1 class="display-font text-5xl md:text-7xl font-extrabold mb-6 leading-tight fade-up fade-up-2">
+            Stop burning your budget.<br>
+            <span class="gradient-text">Automate your business.</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto fade-up fade-up-3" style="color:var(--text-muted)">
+            We're not another agency learning from your mistakes. We are a technology duo. We build modern websites and deploy AI Agents that work for you 24/7. No corporate buzzwords.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-up fade-up-4">
+            <a href="#pakiety" class="btn-primary" style="padding:1rem 2rem;font-size:1rem;border-radius:0.75rem;">See our proposal</a>
+            <a href="#kontakt" style="border:1px solid rgba(124,58,237,0.3);color:var(--text-muted);padding:1rem 2rem;border-radius:0.75rem;font-weight:700;font-size:1rem;transition:all 0.2s;" onmouseover="this.style.borderColor='#a78bfa';this.style.color='#a78bfa'" onmouseout="this.style.borderColor='rgba(124,58,237,0.3)';this.style.color='var(--text-muted)'">
+                Let's talk specifics
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="atuty" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Collaboration model</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-4" style="color:var(--text-primary)">
+                Your biggest advantage?<br>No middlemen.
+            </h2>
+            <p style="color:var(--text-muted)">SMEs have no time for bureaucracy. We operate in a Partner-Partner model.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="step-number">01</div>
+                <div class="relative z-10">
+                    <div class="icon-badge icon-violet">✓</div>
+                    <h3 class="text-xl font-bold mb-3" style="color:var(--text-primary)">You talk to the builders</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+                        No salespeople making empty promises. No missed calls to "project managers". When you call — the person who writes your code and sets up the automation picks up.
+                    </p>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="step-number">02</div>
+                <div class="relative z-10">
+                    <div class="icon-badge icon-blue">⚡</div>
+                    <h3 class="text-xl font-bold mb-3" style="color:var(--text-primary)">Speed of delivery</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--text-muted)">
+                        Decisions made in one online meeting. Project kicks off the same day. We deploy systems in days, not months.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pakiety" class="py-24 px-6" style="background:rgba(18,15,40,0.3);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Ready-made strategies</span>
+            <h2 class="display-font text-4xl font-extrabold mb-4" style="color:var(--text-primary)">Choose your technology leap</h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="glass-card p-8 md:p-10 rounded-3xl flex flex-col">
+                <div>
+                    <div class="section-label mb-2">Base Package</div>
+                    <h3 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">ExTep Web Start</h3>
+                    <p class="text-sm mb-8 leading-relaxed" style="color:var(--text-muted)">
+                        No more embarrassment in front of clients. We build a modern company website that inspires trust and looks great on every device.
+                    </p>
+                    <ul class="space-y-4 text-sm mb-10 font-medium" style="color:#c4bfdf">
+                        <li class="flex items-center"><span class="checkmark">✦</span> Premium company website</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Logo & business card design</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Basic Google optimisation</li>
+                    </ul>
+                </div>
+                <div class="pt-6 mt-auto" style="border-top:1px solid rgba(124,58,237,0.15)">
+                    <a href="#kontakt" class="btn-primary" style="display:inline-block;padding:0.75rem 1.5rem;border-radius:0.65rem;font-size:0.9rem;">Choose Start</a>
+                </div>
+            </div>
+            <div class="glass-card p-8 md:p-10 rounded-3xl flex flex-col pkg-featured relative">
+                <div class="absolute top-0 right-0 pkg-tag">Best seller for SMEs</div>
+                <div>
+                    <div class="section-label mb-2">Full Digitalisation</div>
+                    <h3 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">AI Revolution</h3>
+                    <p class="text-sm mb-8 leading-relaxed" style="color:var(--text-muted)">
+                        Hire a digital employee who never calls in sick. We deploy a website integrated with an AI Agent that takes over routine communication.
+                    </p>
+                    <ul class="space-y-4 text-sm mb-10 font-medium" style="color:#c4bfdf">
+                        <li class="flex items-center"><span class="checkmark">✦</span> <strong style="color:var(--text-primary);margin-right:4px;">Advanced AI Agent</strong> (24/7 support)</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Full new website</li>
+                        <li class="flex items-center"><span class="checkmark">✦</span> Automation of 1 key process</li>
+                    </ul>
+                </div>
+                <div class="pt-6 mt-auto" style="border-top:1px solid rgba(124,58,237,0.15)">
+                    <a href="#kontakt" class="btn-primary" style="display:inline-block;padding:0.75rem 1.5rem;border-radius:0.65rem;font-size:0.9rem;">Revolutionise my business</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="katalog" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-label">Full offer</span>
+            <h2 class="display-font text-3xl font-bold mb-4" style="color:var(--text-primary)">Detailed Service Catalogue</h2>
+            <p style="color:var(--text-muted)">Full transparency. Zero hidden costs. You choose exactly what you actually need.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:var(--accent-bright)">
+                    <span class="cat-dot" style="background:var(--accent-bright)"></span> 1. Graphics &amp; Brandbook
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">Powerful logo design</li>
+                    <li class="service-list-item">Comprehensive Brandbook</li>
+                    <li class="service-list-item">Marketing materials (e.g. flyer)</li>
+                    <li class="service-list-item">Social Media (graphics set / month)</li>
+                </ul>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#93c5fd">
+                    <span class="cat-dot" style="background:#93c5fd"></span> 2. Web Design &amp; Development
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">High-performance Landing Page</li>
+                    <li class="service-list-item">Corporate website (5–10 sub-pages)</li>
+                    <li class="service-list-item">E-commerce store</li>
+                    <li class="service-list-item">UI/UX design (design only)</li>
+                </ul>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#c4b5fd">
+                    <span class="cat-dot" style="background:#c4b5fd"></span> 3. AI Agents &amp; Automation
+                </h3>
+                <ul style="font-size:0.875rem;color:#c4bfdf">
+                    <li class="service-list-item">Simple chatbot deployment</li>
+                    <li class="service-list-item">Advanced AI Agent (with memory)</li>
+                    <li class="service-list-item">Automation audit &amp; strategy</li>
+                    <li class="service-list-item">Process deployment (Make / Zapier)</li>
+                    <li class="service-list-item">Monthly subscription (AI maintenance)</li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="glass-card p-6 rounded-2xl flex-1">
+                    <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:var(--accent-bright)">
+                        <span class="cat-dot" style="background:var(--accent-bright)"></span> 4. Advertising &amp; Print
+                    </h3>
+                    <ul style="font-size:0.875rem;color:#c4bfdf">
+                        <li class="service-list-item">Print materials design</li>
+                        <li class="service-list-item">Pre-press preparation (DTP)</li>
+                        <li class="service-list-item">Production (print) — individual quote</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex-1">
+                    <h3 class="font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2" style="color:#93c5fd">
+                        <span class="cat-dot" style="background:#93c5fd"></span> 5. Lead Generation
+                    </h3>
+                    <ul style="font-size:0.875rem;color:#c4bfdf">
+                        <li class="service-list-item">Ads campaigns (management)</li>
+                        <li class="service-list-item">Lead Generation (B2B Outreach)</li>
+                        <li class="service-list-item">Marketing support (subscription)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="kontakt" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+        <div class="glass-card p-10 md:p-14 rounded-3xl relative overflow-hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-violet),var(--accent-blue))"></div>
+            <span class="section-label">Free consultation</span>
+            <h2 class="display-font text-3xl md:text-4xl font-extrabold mb-4" style="color:var(--text-primary)">
+                Let's stop guessing.<br>Let's calculate it.
+            </h2>
+            <p class="mb-10 leading-relaxed text-sm md:text-base" style="color:var(--text-muted)">
+                We offer 15 minutes of free, knowledge-packed consultation. Tell us about your business, and we'll honestly tell you whether implementing AI and a new website is actually worth it for you. Zero sales pressure.
+            </p>
+            <form action="https://formspree.io/f/mojrybld" method="POST" class="space-y-4 text-left">
+                <input type="hidden" name="_next" value="https://twojadomena.pl/dziekuje.html">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" name="imie" placeholder="Your name" required class="form-input">
+                    <input type="email" name="email" placeholder="Business e-mail" required class="form-input">
+                </div>
+                <textarea name="wiadomosc" required class="form-input" style="height:8rem;resize:vertical;" placeholder="Describe your biggest challenge in 2 sentences..."></textarea>
+                <button type="submit" class="btn-submit">Book 15 minutes with the founder →</button>
+            </form>
+        </div>
+        <footer class="mt-16 text-center" style="color:var(--text-muted);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase">
+            <div>© 2024 ExTep Digital</div>
+            <div class="mt-1" style="opacity:0.6">Technology that earns, not just looks good.</div>
+        </footer>
+    </div>
+</section>
+
+</body>
+</html>
